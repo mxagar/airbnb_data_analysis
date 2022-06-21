@@ -87,11 +87,13 @@ In order to prevent overfitting and make the interpretation easier, I have carri
 
 ## Question 2: To Beach or not to Beach
 
-
+![](./pics/beach_comparison.png)
 
 ## Question 3: Athletic de Bilbao vs. Real Sociedad
 
 If you're a soccer fan, maybe you've heard about the Basque derby: [Athletic de Bilbao](https://en.wikipedia.org/wiki/Athletic_Bilbao) vs. [Real Sociedad](https://en.wikipedia.org/wiki/Real_Sociedad). Both football teams are originally from the two major cities, Bilbao and Donostia-San Sebastian, and they represent the healthy rivalry between the two province capitals. 
+
+![](./pics/donostia_bilbao_comparison.png)
 
 ## Conclusions
 
