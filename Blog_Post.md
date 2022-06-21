@@ -2,6 +2,8 @@
 
 Subtitle: A data-based approach using AirBnB's dataset from the Basque Country
 
+![Photo by @ultrashricco from [Unsplash](https://unsplash.com/photos/8KCquMrFEPg)](./pics/san_sebastian_ultrash-ricco-8KCquMrFEPg-unsplash.jpg)
+
 In 2020 I decided to move back to my birthplace in the [Basque Country](https://en.wikipedia.org/wiki/Basque_Country_(autonomous_community) (Spain) after almost 15 years in Munich (Germany). The Basque region in Spain is a popular touristic destination, as it has a beautiful seaside with a plethora of surf bays and alluring hills that call for hiking and climbing adventures. Culture and gastronomy are also important features, both embedded in a friendly and developed society with modern infrastructure.
 
 When the pandemic seemed to start fading away in spring 2022, friends and acquaintances from Europe began asking me about the best spots and trips in the region, hotels and hostels to stay in case there was no room in my place, etc. The truth is, after so many years abroad I was not the best person to guide them with the best information; however, the [AirBnB dataset from *Euskadi*](http://insideairbnb.com/get-the-data/) (i.e., Basque Country in Basque language) has clarified some of my questions.
@@ -46,7 +48,7 @@ My analysis has concentrated on the listings file, which consists in a table of 
 
 - URL of the listing,
 - URL of the pictures,
-- description,
+- description if the listing,
 - etc.
 
 Of course, not all features are meaningful to answer the posed questions. Additionally, a preliminary exploratory data analysis shows some peculiarities of the dataset. For instance, in contrast to city datasets like [Seattle](https://www.kaggle.com/datasets/airbnb/seattle) or [Boston](https://www.kaggle.com/datasets/airbnb/boston), the listings from the Basque country are related to a complete state in Spain; hence, the neighbourhoods recorded in them are, in fact, cities or villages spread across a large region. Moreover, the price distribution shows several outliers and the price value is relative to the complete accommodation, i.e., not unitary per person. Along these lines, I have performed the following simplifications:
@@ -67,15 +69,28 @@ As far as the **data cleaning** is considered, only entries that have price (tar
 
 The dataset that results after the feature engineering consists of 3931 entries and 354 features. We have almost 5 times more features than in the beginning even with dropped variables because each class in the categorical variables becomes a feature; in particular, there are many amenities, property types and neighbourhoods.
 
-In order to prevent overfitting and make the interpretation easier, I have carried a [lasso regression](https://en.wikipedia.org/wiki/Lasso_(statistics)) to perform **feature selection**. Lasso regression is a L1 regularized regression which forces the model coefficients to converge to 0 if they have small values; subsequently, the features with null coefficients can be dropped. That reduces the number of variables from 354 to 120. Thus, the final dataset has 3931 entries and 120 features. It is split into 70% for training the models and 30% for testing them.
+In order to prevent overfitting and make the interpretation easier, I have carried a [lasso regression](https://en.wikipedia.org/wiki/Lasso_(statistics)) to perform **feature selection**. Lasso regression is a L1 regularized regression which forces the model coefficients to converge to 0 if they have small values; subsequently, the features with null coefficients can be dropped. That reduces the number of variables from 354 to 120. Thus, the final dataset has 3931 entries and 120 features. It is split into 90% for training the models and 10% for testing them.
 
 ## Question 1: Prices
 
+<!--![Map of listing prices encoded in color](./pics/map_listings_prices_geo.jpg)
+-->
+
+![Economical listings with high quality](./pics/economical_listings_geo.jpg)
+
+![Performance of regression models](./pics/regression_evaluation.jpg)
+
+<!--![Feature importance: coefficient values of the ridge regression model](./pics/regression_feature_importance_lm.png)
+-->
+
+![Feature importance: Gini importance values of the random forests model](./pics/regression_feature_importance_rf.png)
 
 ## Question 2: To Beach or not to Beach
 
 
+
 ## Question 3: Athletic de Bilbao vs. Real Sociedad
+
 
 
 ## Conclusions
