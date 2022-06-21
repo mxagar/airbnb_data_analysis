@@ -2,17 +2,17 @@
 
 Subtitle: A data-based approach using AirBnB's dataset from the Basque Country
 
-![Photo by @ultrashricco from [Unsplash](https://unsplash.com/photos/8KCquMrFEPg)](./pics/san_sebastian_ultrash-ricco-8KCquMrFEPg-unsplash.jpg)
+![Donostia-San Sebastian: Photo by @ultrashricco from [Unsplash](https://unsplash.com/photos/8KCquMrFEPg)](./pics/san_sebastian_ultrash-ricco-8KCquMrFEPg-unsplash.jpg)
 
-In 2020 I decided to move back to my birthplace in the [Basque Country](https://en.wikipedia.org/wiki/Basque_Country_(autonomous_community) (Spain) after almost 15 years in Munich (Germany). The Basque region in Spain is a popular touristic destination, as it has a beautiful seaside with a plethora of surf bays and alluring hills that call for hiking and climbing adventures. Culture and gastronomy are also important features, both embedded in a friendly and developed society with modern infrastructure.
+In 2020 I decided to move back to my birthplace in the [Basque Country](https://en.wikipedia.org/wiki/Basque_Country_(autonomous_community)) (Spain) after almost 15 years in Munich (Germany). The Basque region in Spain is a popular touristic destination, as it has a beautiful seaside with a plethora of surf bays and alluring hills that call for hiking and climbing adventures. Culture and gastronomy are also important features, both embedded in a friendly and developed society with modern infrastructure.
 
-When the pandemic seemed to start fading away in spring 2022, friends and acquaintances from Europe began asking me about the best spots and trips in the region, hotels and hostels to stay in case there was no room in my place, etc. The truth is, after so many years abroad I was not the best person to guide them with the best information; however, the [AirBnB dataset from *Euskadi*](http://insideairbnb.com/get-the-data/) (i.e., Basque Country in Basque language) has clarified some of my questions.
+When the pandemic seemed to start fading away in spring 2022, friends and acquaintances from Europe began asking me about the best spots and trips in the region, hotels and hostels to stay in case there was no room in my place, etc. The truth is, after so many years abroad I was not the best person to guide them with the best information; however, the [AirBnB dataset from *Euskadi*](http://insideairbnb.com/get-the-data/) (i.e., Basque Country in [Basque language](https://en.wikipedia.org/wiki/Basque_language)) has clarified some of my questions.
 
 Following the standard [CRISP-DM process](https://en.wikipedia.org/wiki/Cross-industry_standard_process_for_data_mining) for data analysis, I have cleaned, processed and modelled the dataset to answer three major business questions:
 
 1. Prices.
 2. Differences between places with beach access and without.
-3. Differences between the two most important cities: Donostia-San Sebastian and Bilbao.
+3. Differences between the two most important cities: [Donostia-San Sebastian](https://en.wikipedia.org/wiki/San_Sebastián) and [Bilbao](https://en.wikipedia.org/wiki/Bilbao).
 
 In the following, I provide a brief explanatory section on the data processing I carried out. The remainder of the blog post focuses on the three questions introduced above.
 
@@ -39,7 +39,7 @@ My analysis has concentrated on the listings file, which consists in a table of 
 - amenities offered in the accommodation, 
 - etc.
 
-... **date-related data**, such as 
+... **date-related data**, such as:
 
 - first and last review dates, 
 - date when the host joined the platform,
@@ -57,15 +57,15 @@ Of course, not all features are meaningful to answer the posed questions. Additi
 - Only the listings with a price below 1000 USD have been considered.
 - The price has been divided by the number of accommodates, to get a price per person.
 - The features that are irrelevant for modelling and inference have been dropped (e.g., URLs and scrapping information).
-- From fields that contain medium length texts (e.g., description), only the language has been identified (with [spaCy](https://spacy.io/universe/project/spacy-langdetect)). The rest of the text fields have been encoded as categorical features.
+- From fields that contain medium length texts (e.g., description), only the language has been identified with [spaCy](https://spacy.io/universe/project/spacy-langdetect). The rest of the text fields have been encoded as categorical features.
 
 As far as the **data cleaning** is considered, only entries that have price (target for Question 1) and review values have been taken. In case of more than 30% of missing values in a feature, that feature has been dropped. In other cases, the missing values have been filled (i.e., imputed) with either the median or the mode.
 
 **Feature engineering** methods have been applied to almost all variables:
 
 - Any numerical variable with a skewed distribution has been either transformed using logarithmic or power mappings or binarized.
-- Categorical columns have been one-hot encoded.
-- All features have been scaled to the region `[0,1]`
+- Categorical columns have been [one-hot encoded](https://en.wikipedia.org/wiki/One-hot).
+- All features have been scaled to the region `[0,1]`.
 
 The dataset that results after the feature engineering consists of 3931 entries and 354 features. We have almost 5 times more features than in the beginning even with dropped variables because each class in the categorical variables becomes a feature; in particular, there are many amenities, property types and neighbourhoods.
 
@@ -91,7 +91,7 @@ In order to prevent overfitting and make the interpretation easier, I have carri
 
 ## Question 3: Athletic de Bilbao vs. Real Sociedad
 
-
+If you're a soccer fan, maybe you've heard about the Basque derby: [Athletic de Bilbao](https://en.wikipedia.org/wiki/Athletic_Bilbao) vs. [Real Sociedad](https://en.wikipedia.org/wiki/Real_Sociedad). Both football teams are
 
 ## Conclusions
 
@@ -99,6 +99,9 @@ In order to prevent overfitting and make the interpretation easier, I have carri
 2. B
 3. C
 
-These conclusions are quite informal, 
+These conclusions are quite informal, but I hope they can guide my data-savvy friends; in any case, I'm sure you can have a great vacation anywhere you go in the Basque Country :)
 
-To see more about this analysis, see the link to my [Gihub repository](https://github.com/mxagar/airbnb_data_analysis).
+> Are you plannig a trip to the Basque Country? Has this blog post helped you?
+
+To learn more about this analysis, see the link to my [Gihub repository](https://github.com/mxagar/airbnb_data_analysis). You can download the pre-processed dataset and ask the data your own specific questions!
+
