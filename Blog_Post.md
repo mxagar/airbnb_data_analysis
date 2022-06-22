@@ -6,7 +6,7 @@ Subtitle: A data-based approach using AirBnB's dataset from the Basque Country
 <img src="/pics/san_sebastian_ultrash-ricco-8KCquMrFEPg-unsplash.jpg" alt="Donostia-San Sebastian: Photo by @ultrashricco from Unsplash" width="1000"/>
 </p>
 
-[Donostia-San Sebastian: Photo by @ultrashricco from Unsplash]((https://unsplash.com/photos/8KCquMrFEPg))
+[Donostia-San Sebastian: Photo by @ultrashricco from Unsplash](https://unsplash.com/photos/8KCquMrFEPg)
 
 In 2020 I decided to move back to my birthplace in the [Basque Country](https://en.wikipedia.org/wiki/Basque_Country_(autonomous_community)) (Spain) after almost 15 years in Munich (Germany). The Basque region in Spain is a popular touristic destination, as it has a beautiful seaside with a plethora of surf bays and alluring hills that call for hiking and climbing adventures. Culture and gastronomy are also important features, both embedded in a friendly and developed society with modern infrastructure.
 
