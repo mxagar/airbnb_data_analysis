@@ -76,9 +76,14 @@ In order to prevent overfitting and make the interpretation easier, I have carri
 <!--![Map of listing prices encoded in color](./pics/map_listings_prices_geo.jpg)
 -->
 
-![Economical listings with high quality](./pics/economical_listings_geo.jpg)
+<p align="center">
+<img src="/pics/economical_listings_geo.jpg" alt="Economical listings with high quality" width="600"/>
+</p>
 
-![Performance of regression models](./pics/regression_evaluation.jpg)
+
+<p align="center">
+<img src="/pics/regression_evaluation.jpg" alt="Performance of regression models" width="600"/>
+</p>
 
 <!--![Feature importance: coefficient values of the ridge regression model](./pics/regression_feature_importance_lm.png)
 -->
@@ -87,14 +92,16 @@ In order to prevent overfitting and make the interpretation easier, I have carri
 
 ## Question 2: To Beach or not to Beach
 
-![Feature differences between accomodations with and without beach access](./pics/beach_comparison.png)
+
+<p align="center">
+<img src="/pics/beach_comparison.png" alt="Feature differences between accomodations with and without beach access" width="600"/>
+</p>
+
 
 ## Question 3: Athletic de Bilbao vs. Real Sociedad
 
 If you're a soccer fan, maybe you've heard about the Basque derby: [Athletic de Bilbao](https://en.wikipedia.org/wiki/Athletic_Bilbao) vs. [Real Sociedad](https://en.wikipedia.org/wiki/Real_Sociedad). Both football teams are originally from the two major cities, Bilbao and Donostia-San Sebastian, and they represent the healthy rivalry between the two province capitals. 
 
-<!--![Feature differences between accomodations in Donostian-San Sebastian and Bilbao](./pics/donostia_bilbao_comparison.png)
--->
 <p align="center">
 <img src="/pics/donostia_bilbao_comparison.png" alt="Feature differences between accomodations in Donostian-San Sebastian and Bilbao" width="600"/>
 </p>
