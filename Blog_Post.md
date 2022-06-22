@@ -123,7 +123,7 @@ If you're a soccer fan, maybe you've heard about the Basque derby: [Athletic de 
 </p>
 
 <p align="center">
-<img src="/pics/price_distribution_cities.png" alt="Price distribution for accommodations in Donostia-San Sebastian and Bilbao" width="600"/>
+<img src="/pics/price_distribution_city.png" alt="Price distribution for accommodations in Donostia-San Sebastian and Bilbao" width="600"/>
 </p>
 
 
