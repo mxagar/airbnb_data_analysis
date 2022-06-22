@@ -6,7 +6,7 @@ Subtitle: A data-based approach using AirBnB's dataset from the Basque Country
 
 In 2020 I decided to move back to my birthplace in the [Basque Country](https://en.wikipedia.org/wiki/Basque_Country_(autonomous_community)) (Spain) after almost 15 years in Munich (Germany). The Basque region in Spain is a popular touristic destination, as it has a beautiful seaside with a plethora of surf bays and alluring hills that call for hiking and climbing adventures. Culture and gastronomy are also important features, both embedded in a friendly and developed society with modern infrastructure.
 
-When the pandemic seemed to start fading away in spring 2022, friends and acquaintances from Europe began asking me about the best spots and trips in the region, hotels and hostels to stay in case there was no room in my place, etc. The truth is, after so many years abroad I was not the best person to guide them with the best information; however, the [AirBnB dataset from *Euskadi*](http://insideairbnb.com/get-the-data/) (i.e., Basque Country in [Basque language](https://en.wikipedia.org/wiki/Basque_language)) has clarified some of my questions.
+When the pandemic seemed to start fading away in spring 2022, friends and acquaintances from Europe began asking me about the best spots and trips in the region, hotels and hostels to stay in case there was no room in my place, etc. The truth is, after so many years abroad I was not the best person to guide them with accurate information; however, the [AirBnB dataset from *Euskadi*](http://insideairbnb.com/get-the-data/) (i.e., Basque Country in [Basque language](https://en.wikipedia.org/wiki/Basque_language)) has clarified some of my questions.
 
 Following the standard [CRISP-DM process](https://en.wikipedia.org/wiki/Cross-industry_standard_process_for_data_mining) for data analysis, I have cleaned, processed and modelled the dataset to answer three major business questions:
 
@@ -87,13 +87,15 @@ In order to prevent overfitting and make the interpretation easier, I have carri
 
 ## Question 2: To Beach or not to Beach
 
-![](./pics/beach_comparison.png)
+![Feature differences between accomodations with and without beach access](./pics/beach_comparison.png)
 
 ## Question 3: Athletic de Bilbao vs. Real Sociedad
 
 If you're a soccer fan, maybe you've heard about the Basque derby: [Athletic de Bilbao](https://en.wikipedia.org/wiki/Athletic_Bilbao) vs. [Real Sociedad](https://en.wikipedia.org/wiki/Real_Sociedad). Both football teams are originally from the two major cities, Bilbao and Donostia-San Sebastian, and they represent the healthy rivalry between the two province capitals. 
 
-![](./pics/donostia_bilbao_comparison.png)
+<!--![Feature differences between accomodations in Donostian-San Sebastian and Bilbao](./pics/donostia_bilbao_comparison.png)
+-->
+<img src="/pics/donostia_bilbao_comparison.jpg" alt="Feature differences between accomodations in Donostian-San Sebastian and Bilbao" width="200"/>
 
 ## Conclusions
 
