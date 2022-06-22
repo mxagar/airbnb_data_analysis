@@ -81,7 +81,7 @@ I have trained two models with 90% of the processed dataset using [Scikit-Learn]
 
 
 <p align="center">
-<img src="/pics/regression_evaluation.jpg" alt="Performance of regression models" width="400"/>
+<img src="/pics/regression_evaluation.png" alt="Performance of regression models" width="400"/>
 </p>
 
 
