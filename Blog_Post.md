@@ -2,7 +2,11 @@
 
 Subtitle: A data-based approach using AirBnB's dataset from the Basque Country
 
-![Donostia-San Sebastian: Photo by @ultrashricco from [Unsplash](https://unsplash.com/photos/8KCquMrFEPg)](./pics/san_sebastian_ultrash-ricco-8KCquMrFEPg-unsplash.jpg)
+<p align="center">
+<img src="/pics/san_sebastian_ultrash-ricco-8KCquMrFEPg-unsplash.jpg" alt="Donostia-San Sebastian: Photo by @ultrashricco from Unsplash" width="1000"/>
+</p>
+
+[Donostia-San Sebastian: Photo by @ultrashricco from Unsplash]((https://unsplash.com/photos/8KCquMrFEPg))
 
 In 2020 I decided to move back to my birthplace in the [Basque Country](https://en.wikipedia.org/wiki/Basque_Country_(autonomous_community)) (Spain) after almost 15 years in Munich (Germany). The Basque region in Spain is a popular touristic destination, as it has a beautiful seaside with a plethora of surf bays and alluring hills that call for hiking and climbing adventures. Culture and gastronomy are also important features, both embedded in a friendly and developed society with modern infrastructure.
 
@@ -88,7 +92,9 @@ In order to prevent overfitting and make the interpretation easier, I have carri
 <!--![Feature importance: coefficient values of the ridge regression model](./pics/regression_feature_importance_lm.png)
 -->
 
-![Feature importance: Gini importance values of the random forests model](./pics/regression_feature_importance_rf.png)
+<p align="center">
+<img src="/pics/regression_feature_importance_rf.png" alt="Feature importance: Gini importance values of the random forests model" width="600"/>
+</p>
 
 ## Question 2: To Beach or not to Beach
 
