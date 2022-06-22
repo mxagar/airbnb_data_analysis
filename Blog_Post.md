@@ -22,7 +22,7 @@ In the following, I provide a brief explanatory section on the data processing I
 
 ## The Dataset and Its Processing
 
-If you'd like go directly to the meet, you can skip this section. Here, I give an overview of most what is done in all the four notebooks of my [Gihub repository](https://github.com/mxagar/airbnb_data_analysis) that help answer the questions pose above. Those preliminary steps consist of the data cleaning, the feature engineering and selection and the data modelling.
+If you'd like go directly to the meat, you can skip this section. Here, I give an overview of most what is done in all the four notebooks of my [Gihub repository](https://github.com/mxagar/airbnb_data_analysis) that help answer the questions pose above. Those preliminary steps consist of the data cleaning, the feature engineering and selection and the data modelling.
 
 AirBnB provides with several CSV files for each world region: (1) a listing of properties that offer accommodation, (2) reviews related to the listings, (3) a calendar and (4) geographical data. A detailed description of the features in each file can be found in the official [dataset dictionary](https://docs.google.com/spreadsheets/d/1iWCNJcSutYqpULSQHlNyGInUvHg2BoUGoNRIGa6Szc4/edit#gid=982310896).
 
@@ -62,7 +62,7 @@ Of course, not all features are meaningful to answer the posed questions. Additi
 - The features that are irrelevant for modelling and inference have been dropped (e.g., URLs and scrapping information).
 - From fields that contain medium length texts (e.g., description), only the language has been identified with [spaCy](https://spacy.io/universe/project/spacy-langdetect). The rest of the text fields have been encoded as categorical features.
 
-One of my first actions with the price was to divide it by the number of maximum accommodates to make it unitary, i.e., USD per person. However, the models underperform. Additionally, both variables don't need to have a linear relationship: maybe the accommodates value considers the places in the sofa bed, and the price does not increase if they are used, or not relative to the prior unitary price.
+One of my first actions with the price was to divide it by the number of maximum accommodates to make it unitary, i.e., USD per person. However, the models underperform. Additionally, both variables don't need to have a linear relationship: maybe the accommodates value considers the places in the sofa bed, and the price does not increase if they are used, or not relative to the base unitary price.
 
 As far as the **data cleaning** is considered, only entries that have price (target for Question 1) and review values have been taken. In case of more than 30% of missing values in a feature, that feature has been dropped. In other cases, the missing values have been filled (i.e., imputed) with either the median or the mode.
 
@@ -112,32 +112,50 @@ Being different models, different features appear in the ranking; in any case, b
 - the host is estimated to have shared rooms,
 - and when the bathroom(s) is/are shared.
 
-Finally, the accommodations which have
+Finally, the accommodations which have a very good average review (above the 90% percentile) and have a model price larger than the real one
 
 <p align="center">
 <img src="/pics/economical_listings_geo.jpg" alt="Economical listings with high quality" width="800"/>
 </p>
 
-I will not post the URLs of the detected listings, but you can find them quite easily using the notebooks of the linked repository :wink:
+I will not post the URLs of the detected listings, but you can find them quite easily using the notebooks of the linked repository :wink:.
 
 <!--![Map of listing prices encoded in color](./pics/map_listings_prices_geo.jpg)
 -->
 
 ## Question 2: To Beach or not to Beach
 
-Of course, you can always go to the beach to catch some waves in the Basque Country, but doing it on foot in less than 15 minutes has an additional cost on average. That is one of the insights displayed in the next diagram.
+Of course, you can always go to the beach to catch some waves in the Basque Country, but doing it on foot in less than 15 minutes has an additional cost on average. That is one of the insights distilled from the next diagram.
 
-This difference or significance plot shows the [T and Z statistics](https://en.wikipedia.org/wiki/Student%27s_t-test) computed for each feature considering two independent groups (accommodations with and without beach access). These statistics are related to the difference of means (T statistic, for continuous variables) or proportions (Z statistic, for discrete variables or proportions). If we take the usual significance level of 5%, the critical Z or T value is roughly 2. That means that if the values in the diagram are greater than 2, the averages or proportions of each group in each feature are significantly different.
+This difference or significance plot shows the [T and Z statistics](https://en.wikipedia.org/wiki/Student%27s_t-test) computed for each feature considering two independent groups: accommodations with and without beach access. These statistics are related to the difference of means (T statistic, for continuous variables) or proportions (Z statistic, for discrete variables or proportions). If we take the usual significance level of 5%, the critical Z or T value is roughly 2. That means that if the values in the diagram are greater than 2, the averages or proportions of each group in each feature are significantly different. The probability of being otherwise but incorrectly stating that they are different is 5%.
 
-The sign of the statistic is color coded: blue bars denote positive statistics, which are associated with larger values for accommodations that have beach access.
+The sign of the statistic is color-coded: blue bars denote positive statistics, which are associated with larger values for accommodations that have beach access.
 
 <p align="center">
 <img src="/pics/beach_comparison.png" alt="Feature differences between accomodations with and without beach access" width="600"/>
 </p>
 
-Long story short, here's the intepretation: 
+Long story short, here's the intepretation: the group of accommodations that have a beach within 2 km have significantly larger
 
-Going back to the price, the following figure shows the different price distributions for accommodations with a beach in less than 2km and further. We need to consider that there such a distribution or a congtingency table behind each of the features in the previous diagram.
+- proportions of accomodations located in the provvince of Gipuzkoa,
+- proportions of accomodations with a waterfront,
+- and prices.
+
+We can continue with the list until the significant differences disappear down in the ranking with the amenity *dishes and silverware*. **Note that larger statistics don't necessarily mean larger differences; instead, they mean that the probability of wrongly stating a difference between groups is lower.**
+
+However, it is more interesting to compose a *profile* of listings with beach access and without selecting features manually; for instance, accomodations on the seaside:
+
+- have larger prices,
+- are more often entire homes or appartments,
+- usually have less shared bathrooms,
+- have more often a description in English,
+- have more often patios of balconies,
+- have more bedrooms,
+- allow for more accommodates,
+- their host lives more often nearby,
+- ...
+
+Going back to the price, the following figure shows the different price distributions for accommodations with a beach in less than 2km and further. We need to consider that there such a distribution or a congtingency table behind each of the Z/T statistics in the previous diagram.
 
 <p align="center">
 <img src="/pics/price_distribution_beach.png" alt="Price distribution for accommodations with and without beach access in less than 2km" width="600"/>
@@ -147,9 +165,28 @@ Going back to the price, the following figure shows the different price distribu
 
 If you're a soccer fan, maybe you've heard about the Basque derby: [Athletic de Bilbao](https://en.wikipedia.org/wiki/Athletic_Bilbao) vs. [Real Sociedad](https://en.wikipedia.org/wiki/Real_Sociedad). Both football teams are originally from the two major cities, Bilbao and Donostia-San Sebastian, and they represent the healthy rivalry between the two province capitals. 
 
+In order to determine the differences between the two cities in terms of listing features, I have computed the same difference or significance plot as before, shown below.
+
 <p align="center">
 <img src="/pics/donostia_bilbao_comparison.png" alt="Feature differences between accomodations in Donostian-San Sebastian and Bilbao" width="600"/>
 </p>
+
+Donostia-San Sebastian seems to have
+
+- larger prices,
+- more descriptions in English,
+- more often patios of balconies,
+- more often entire homes or appartments,
+- more space for accommodates,
+- ...
+
+On the other hand, Bilbao has
+
+- more shared bedrooms,
+- more amenities such as hangers, first aid kits, extra pillows, breakfast
+- ...
+
+Finally, as before, I leave the price distribution for both cities, since it is the feature in which the difference is more significant.
 
 <p align="center">
 <img src="/pics/price_distribution_city.png" alt="Price distribution for accommodations in Donostia-San Sebastian and Bilbao" width="600"/>
@@ -157,6 +194,8 @@ If you're a soccer fan, maybe you've heard about the Basque derby: [Athletic de 
 
 
 ## Conclusions
+
+In this blog post, we took a look at the AirBnB accommodation properties for the Basque Country, narrowing down to these insights:
 
 1. A
 2. B
