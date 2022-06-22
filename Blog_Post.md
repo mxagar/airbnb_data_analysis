@@ -112,13 +112,13 @@ Being different models, different features appear in the ranking; in any case, b
 - the host is estimated to have shared rooms,
 - and when the bathroom(s) is/are shared.
 
-Finally, a very practical the accommodations which have a very good average review (above the 90% percentile) and have a model price larger than the real one
+Finally, a very practical insight to close the pricing question: we can easily select the the accommodations which have a very good average review (above the 90% percentile) and yield a model price larger than the real one, as shown in the following figure.
 
 <p align="center">
 <img src="/pics/economical_listings_geo.jpg" alt="Economical listings with high quality" width="800"/>
 </p>
 
-I will not post the URLs of the detected listings, but you can find them quite easily using the notebooks of the linked repository :wink:.
+I prefer not post the URLs of the detected listings, but it is straighforward to obtain them using the notebooks of the linked repository :wink:.
 
 <!--![Map of listing prices encoded in color](./pics/map_listings_prices_geo.jpg)
 -->
@@ -174,6 +174,7 @@ In order to determine the differences between the two cities in terms of listing
 Donostia-San Sebastian seems to have
 
 - larger prices,
+- more accommodations with waterfronts,
 - more descriptions in English,
 - more often patios of balconies,
 - more often entire homes or appartments,
@@ -197,9 +198,9 @@ Finally, as before, I leave the price distribution for both cities, since it is 
 
 In this blog post, we took a look at the AirBnB accommodation properties for the Basque Country, narrowing down to these insights:
 
-1. A
-2. B
-3. C
+1. Even though the price regression models have a moderate R2, we have shown how to detect listings which are candidate to be a bargain: high review scores and predicted price above the true one. Additionally, we have discorvered the features with the most impact on the price: type of accommodation, bathrooms, locations, etc.
+2. Listings with a beach in less than 2 km have significantly more entire homes, more balconies, waterfronts and space for more accommodates; this is in line with their larger prices.
+3. The two major cities Donostia-San Sebastian and Bilbao nicely align with the previous synthesis, being Donostia a beach city and Bilbao a city without. Additionally, Bilbao seems to favor other practical domestic amenities.
 
 These conclusions are quite informal, but I hope they can guide my data-savvy friends; in any case, I'm sure you can have a great vacation anywhere you go in the Basque Country :)
 
