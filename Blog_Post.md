@@ -112,7 +112,7 @@ Being different models, different features appear in the ranking; in any case, b
 - the host is estimated to have shared rooms,
 - and when the bathroom(s) is/are shared.
 
-Finally, the accommodations which have a very good average review (above the 90% percentile) and have a model price larger than the real one
+Finally, a very practical the accommodations which have a very good average review (above the 90% percentile) and have a model price larger than the real one
 
 <p align="center">
 <img src="/pics/economical_listings_geo.jpg" alt="Economical listings with high quality" width="800"/>
@@ -186,7 +186,7 @@ On the other hand, Bilbao has
 - more amenities such as hangers, first aid kits, extra pillows, breakfast
 - ...
 
-Finally, as before, I leave the price distribution for both cities, since it is the feature in which the difference is more significant.
+Finally, as before, I leave the price distribution for both cities, since it is the feature in which the difference is more significant. We can see that the distribution from Bilbao has more units in the lowest price region, whereas the red city lacks listings with prices above 150 USD, compared to Donostia-San Sebastian. That is in line with several already explained facts, such as that Bilbao has more shared rooms whereas Donostia has more entire homes, while being the effect on the price of both characteristics the opposite.
 
 <p align="center">
 <img src="/pics/price_distribution_city.png" alt="Price distribution for accommodations in Donostia-San Sebastian and Bilbao" width="600"/>
