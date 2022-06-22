@@ -35,7 +35,7 @@ My analysis has concentrated on the listings file, which consists in a table of 
 - longitude and latitude,
 - etc.
 
-... **categorical variables**, such as:
+... **categorical variables**:
 
 - neighbourhood name,
 - property type (apartment, room, hotel, etc.)
@@ -43,7 +43,7 @@ My analysis has concentrated on the listings file, which consists in a table of 
 - amenities offered in the accommodation, 
 - etc.
 
-... **date-related data**, such as:
+... **date-related data**:
 
 - first and last review dates, 
 - date when the host joined the platform,
@@ -65,20 +65,28 @@ Of course, not all features are meaningful to answer the posed questions. Additi
 
 As far as the **data cleaning** is considered, only entries that have price (target for Question 1) and review values have been taken. In case of more than 30% of missing values in a feature, that feature has been dropped. In other cases, the missing values have been filled (i.e., imputed) with either the median or the mode.
 
-**Feature engineering** methods have been applied to almost all variables:
+Additionally, I have applied **feature engineering** methods to almost all variables:
 
-- Any numerical variable with a skewed distribution has been either transformed using logarithmic or power mappings or binarized.
+- Any numerical variable with a skewed distribution has been either transformed using logarithmic or power mappings, or binarized.
 - Categorical columns have been [one-hot encoded](https://en.wikipedia.org/wiki/One-hot).
 - All features have been scaled to the region `[0,1]`.
 
 The dataset that results after the feature engineering consists of 3931 entries and 354 features. We have almost 5 times more features than in the beginning even with dropped variables because each class in the categorical variables becomes a feature; in particular, there are many amenities, property types and neighbourhoods.
 
-In order to prevent overfitting and make the interpretation easier, I have carried a [lasso regression](https://en.wikipedia.org/wiki/Lasso_(statistics)) to perform **feature selection**. Lasso regression is a L1 regularized regression which forces the model coefficients to converge to 0 if they have small values; subsequently, the features with null coefficients can be dropped. That reduces the number of variables from 354 to 120. Thus, the final dataset has 3931 entries and 120 features. It is split into 90% for training the models and 10% for testing them.
+Finally, in order to prevent overfitting and make the interpretation easier, I have carried a [lasso regression](https://en.wikipedia.org/wiki/Lasso_(statistics)) to perform **feature selection**. Lasso regression is a L1 regularized regression which forces the model coefficients to converge to 0 if they have small values; subsequently, the features with small coefficient values can be dropped. That reduces the number of variables from 354 to 120. Thus, the final dataset has 3931 entries and 120 features.
 
 ## Question 1: Prices
 
-<!--![Map of listing prices encoded in color](./pics/map_listings_prices_geo.jpg)
--->
+I have trained two models with 90% of the processed dataset using [Scikit-Learn](https://scikit-learn.org/stable/): (1) a [ridge regression](https://en.wikipedia.org/wiki/Ridge_regression) (L2 regularized regression) model and (2) a [random forests](https://en.wikipedia.org/wiki/Random_forest) model. The latter seems to score the best R2 value, but, unfortunately, it is not a big one: only 58% of the variance can be explained with the random decision trees. The following diagram shows the model performance for the test split.
+
+
+<p align="center">
+<img src="/pics/regression_evaluation.jpg" alt="Performance of regression models" width="400"/>
+</p>
+
+
+
+
 
 <p align="center">
 <img src="/pics/economical_listings_geo.jpg" alt="Economical listings with high quality" width="600"/>
@@ -86,15 +94,14 @@ In order to prevent overfitting and make the interpretation easier, I have carri
 
 
 <p align="center">
-<img src="/pics/regression_evaluation.jpg" alt="Performance of regression models" width="600"/>
+<img src="/pics/regression_feature_importance_rf.png" alt="Feature importance: Gini importance values of the random forests model" width="600"/>
 </p>
 
+<!--![Map of listing prices encoded in color](./pics/map_listings_prices_geo.jpg)
+-->
 <!--![Feature importance: coefficient values of the ridge regression model](./pics/regression_feature_importance_lm.png)
 -->
 
-<p align="center">
-<img src="/pics/regression_feature_importance_rf.png" alt="Feature importance: Gini importance values of the random forests model" width="600"/>
-</p>
 
 ## Question 2: To Beach or not to Beach
 
@@ -103,6 +110,9 @@ In order to prevent overfitting and make the interpretation easier, I have carri
 <img src="/pics/beach_comparison.png" alt="Feature differences between accomodations with and without beach access" width="600"/>
 </p>
 
+<p align="center">
+<img src="/pics/price_distribution_beach.png" alt="Price distribution for accommodations with and without beach access in less than 2km" width="600"/>
+</p>
 
 ## Question 3: Athletic de Bilbao vs. Real Sociedad
 
@@ -111,6 +121,11 @@ If you're a soccer fan, maybe you've heard about the Basque derby: [Athletic de 
 <p align="center">
 <img src="/pics/donostia_bilbao_comparison.png" alt="Feature differences between accomodations in Donostian-San Sebastian and Bilbao" width="600"/>
 </p>
+
+<p align="center">
+<img src="/pics/price_distribution_cities.png" alt="Price distribution for accommodations in Donostia-San Sebastian and Bilbao" width="600"/>
+</p>
+
 
 ## Conclusions
 
