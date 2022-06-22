@@ -84,19 +84,25 @@ I have trained two models with 90% of the processed dataset using [Scikit-Learn]
 <img src="/pics/regression_evaluation.png" alt="Performance of regression models" width="400"/>
 </p>
 
-The models tend to underpredict accommodation prices; that bias clearly increases as the prices start being larger than 50 USD. Such a moderate R2 is not the best one to apply the model to perform predictions. However, we can deduce the most important features that determine the listing prices if we compute the [Gini importances](https://medium.com/the-artificial-impostor/feature-importance-measures-for-tree-models-part-i-47f187c1a2c3), as done in the following diagram.
+The models tend to underpredict accommodation prices; that bias clearly increases as the prices start to be larger than 50 USD. Such a moderate R2 is not the best one to apply the model to perform predictions. However, we can deduce the most important features that determine the listing prices if we compute the [Gini importances](https://medium.com/the-artificial-impostor/feature-importance-measures-for-tree-models-part-i-47f187c1a2c3), as done in the following diagram. The top-5 variables that determine the price of a listing are:
+
+- whether an accommodation is an entire home or appartment,
+- the number of bathrooms in it,
+- the number of accommodates,
+- whether the bathroom(s) is shared,
+- and whether the housing is located in Donostia-San Sebastian.
 
 <p align="center">
 <img src="/pics/regression_feature_importance_rf.png" alt="Feature importance: Gini importance values of the random forests model" width="600"/>
 </p>
 
-But how does increasing the value of each feature affect the price: does it contribute to an increase in price or a decrease? That can be observed in the following diagram, equivalent to the previous one.
+But how does increasing the value of each feature affect the price: does it contribute to an increase in price or a decrease? That can be observed in the following diagram, equivalent to the previous one. In contrast to the 
 
 <p align="center">
 <img src="/pics/regression_feature_importance_lm.png" alt="Feature importance according to the coefficient value in ridge regression" width="600"/>
 </p>
 
-
+Note that in both feature importance diagrams only the top-30 features are shown. Additionally, some categorical variables appear encoded with numbers, such as the propoerty type. In the diagrams, `propety_type_54` is realted to *entire villas*, `21` to X and `43` to X.
 
 <p align="center">
 <img src="/pics/economical_listings_geo.jpg" alt="Economical listings with high quality" width="800"/>
