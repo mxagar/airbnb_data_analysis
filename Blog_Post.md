@@ -29,7 +29,7 @@ AirBnB provides with several CSV files for each world region: (1) a listing of p
 My analysis has concentrated on the listings file, which consists in a table of 5228 rows/entries (i.e., the accommodation places) and 74 columns/features (their attributes). Among the features, we find **continuous variables**, such as:
 
 - price of the complete accommodation,
-- maximum number of persons that can be accommodated,
+- accommodates: maximum number of persons that can be accommodated,
 - review scores for different dimensions,
 - reviews per month,
 - longitude and latitude,
@@ -55,13 +55,14 @@ My analysis has concentrated on the listings file, which consists in a table of 
 - description if the listing,
 - etc.
 
-Of course, not all features are meaningful to answer the posed questions. Additionally, a preliminary exploratory data analysis shows some peculiarities of the dataset. For instance, in contrast to city datasets like [Seattle](https://www.kaggle.com/datasets/airbnb/seattle) or [Boston](https://www.kaggle.com/datasets/airbnb/boston), the listings from the Basque country are related to a complete state in Spain; hence, the neighbourhoods recorded in them are, in fact, cities or villages spread across a large region. Moreover, the price distribution shows several outliers and the price value is relative to the complete accommodation, i.e., not unitary per person. Along these lines, I have performed the following simplifications:
+Of course, not all features are meaningful to answer the posed questions. Additionally, a preliminary exploratory data analysis shows some peculiarities of the dataset. For instance, in contrast to city datasets like [Seattle](https://www.kaggle.com/datasets/airbnb/seattle) or [Boston](https://www.kaggle.com/datasets/airbnb/boston), the listings from the Basque country are related to a complete state in Spain; hence, the neighbourhoods recorded in them are, in fact, cities or villages spread across a large region. Moreover, the price distribution shows several outliers. Along these lines, I have performed the following simplifications:
 
 - Only the 60 (out of 196) neighbourhoods (i.e., cities and villages) with the most listings have been taken; these account for almost 90% of all listings. That reduction has allowed to manually encode neighbourhood properties, such as whether a village has access to a beach in less than 2 km (Question 2).
 - Only the listings with a price below 1000 USD have been considered.
-- The price has been divided by the number of accommodates, to get a price per person.
 - The features that are irrelevant for modelling and inference have been dropped (e.g., URLs and scrapping information).
 - From fields that contain medium length texts (e.g., description), only the language has been identified with [spaCy](https://spacy.io/universe/project/spacy-langdetect). The rest of the text fields have been encoded as categorical features.
+
+One of my first actions with the price was to divide it by the number of maximum accommodates to make it unitary, i.e., USD per person. However, the models underperform. Additionally, both variables don't need to have a linear relationship: maybe the accommodates value considers the places in the sofa bed, and the price does not increase if they are used, or not relative to the prior unitary price.
 
 As far as the **data cleaning** is considered, only entries that have price (target for Question 1) and review values have been taken. In case of more than 30% of missing values in a feature, that feature has been dropped. In other cases, the missing values have been filled (i.e., imputed) with either the median or the mode.
 
@@ -73,37 +74,45 @@ Additionally, I have applied **feature engineering** methods to almost all varia
 
 The dataset that results after the feature engineering consists of 3931 entries and 354 features. We have almost 5 times more features than in the beginning even with dropped variables because each class in the categorical variables becomes a feature; in particular, there are many amenities, property types and neighbourhoods.
 
-Finally, in order to prevent overfitting and make the interpretation easier, I have carried a [lasso regression](https://en.wikipedia.org/wiki/Lasso_(statistics)) to perform **feature selection**. Lasso regression is a L1 regularized regression which forces the model coefficients to converge to 0 if they have small values; subsequently, the features with small coefficient values can be dropped. That reduces the number of variables from 354 to 120. Thus, the final dataset has 3931 entries and 120 features.
+Finally, in order to prevent overfitting and make the interpretation easier, I have carried a [lasso regression](https://en.wikipedia.org/wiki/Lasso_(statistics)) to perform **feature selection**. Lasso regression is a L1 regularized regression which forces the model coefficients to converge to 0 if they have small values; subsequently, the features with small coefficient values can be dropped. That reduces the number of variables from 354 to 122. Thus, the final dataset has 3931 entries and 122 features.
 
 ## Question 1: Prices
 
-I have trained two models with 90% of the processed dataset using [Scikit-Learn](https://scikit-learn.org/stable/): (1) a [ridge regression](https://en.wikipedia.org/wiki/Ridge_regression) (L2 regularized regression) model and (2) a [random forests](https://en.wikipedia.org/wiki/Random_forest) model. The latter seems to score the best R2 value, but, unfortunately, it is not a big one: only 58% of the variance can be explained with the random decision trees. The following diagram shows the model performance for the test split.
-
+I have trained two models with 90% of the processed dataset using [Scikit-Learn](https://scikit-learn.org/stable/): (1) a [ridge regression](https://en.wikipedia.org/wiki/Ridge_regression) (L2 regularized regression) model and (2) a [random forests](https://en.wikipedia.org/wiki/Random_forest) model. The latter seems to score the best R2 value: 69% of the variance can be explained with the random decision trees. The following diagram shows the model performance for the test split.
 
 <p align="center">
 <img src="/pics/regression_evaluation.png" alt="Performance of regression models" width="400"/>
 </p>
 
-
-
-
-
-<p align="center">
-<img src="/pics/economical_listings_geo.jpg" alt="Economical listings with high quality" width="600"/>
-</p>
-
+The models tend to underpredict accommodation prices; that bias clearly increases as the prices start being larger than 50 USD. Such a moderate R2 is not the best one to apply the model to perform predictions. However, we can deduce the most important features that determine the listing prices if we compute the [Gini importances](https://medium.com/the-artificial-impostor/feature-importance-measures-for-tree-models-part-i-47f187c1a2c3), as done in the following diagram.
 
 <p align="center">
 <img src="/pics/regression_feature_importance_rf.png" alt="Feature importance: Gini importance values of the random forests model" width="600"/>
 </p>
 
+But how does increasing the value of each feature affect the price: does it contribute to an increase in price or a decrease? That can be observed in the following diagram, equivalent to the previous one.
+
+<p align="center">
+<img src="/pics/regression_feature_importance_lm.png" alt="Feature importance according to the coefficient value in ridge regression" width="600"/>
+</p>
+
+
+
+<p align="center">
+<img src="/pics/economical_listings_geo.jpg" alt="Economical listings with high quality" width="800"/>
+</p>
+
+
+
+
 <!--![Map of listing prices encoded in color](./pics/map_listings_prices_geo.jpg)
--->
-<!--![Feature importance: coefficient values of the ridge regression model](./pics/regression_feature_importance_lm.png)
 -->
 
 
 ## Question 2: To Beach or not to Beach
+
+Of course, you can always go to the beach to catch some waves in the Basque Country, but doing it on foot in less than 15 minutes has an additional cost on average.
+
 
 
 <p align="center">
