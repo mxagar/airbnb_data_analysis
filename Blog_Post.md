@@ -95,7 +95,7 @@ If you're a soccer fan, maybe you've heard about the Basque derby: [Athletic de 
 
 <!--![Feature differences between accomodations in Donostian-San Sebastian and Bilbao](./pics/donostia_bilbao_comparison.png)
 -->
-<img src="/pics/donostia_bilbao_comparison.jpg" alt="Feature differences between accomodations in Donostian-San Sebastian and Bilbao" width="200"/>
+<img src="/pics/donostia_bilbao_comparison.png" alt="Feature differences between accomodations in Donostian-San Sebastian and Bilbao" width="200"/>
 
 ## Conclusions
 
