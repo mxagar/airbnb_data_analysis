@@ -89,41 +89,55 @@ The models tend to underpredict accommodation prices; that bias clearly increase
 - whether an accommodation is an entire home or appartment,
 - the number of bathrooms in it,
 - the number of accommodates,
-- whether the bathroom(s) is shared,
+- whether the bathroom(s) is/are shared,
 - and whether the housing is located in Donostia-San Sebastian.
 
 <p align="center">
 <img src="/pics/regression_feature_importance_rf.png" alt="Feature importance: Gini importance values of the random forests model" width="600"/>
 </p>
 
-But how does increasing the value of each feature affect the price: does it contribute to an increase in price or a decrease? That can be observed in the following diagram, equivalent to the previous one. In contrast to the 
+Note that only the top-30 features are shown; these account to 90% of the accummulated Gini importance (all 122 variables would account for 100%).
+
+But how does increasing the value of each feature affect the price: does it contribute to an increase in price or a decrease? That can be observed in the following diagram, equivalent to the previous one. In contrast to the former, here the 30 regression coefficients with the largest magnitude are plotted -- red bars are associated with features that decrease the price when they are increased.
 
 <p align="center">
 <img src="/pics/regression_feature_importance_lm.png" alt="Feature importance according to the coefficient value in ridge regression" width="600"/>
 </p>
 
-Note that in both feature importance diagrams only the top-30 features are shown. Additionally, some categorical variables appear encoded with numbers, such as the propoerty type. In the diagrams, `propety_type_54` is realted to *entire villas*, `21` to X and `43` to X.
+Being different models, different features appear in the ranking; in any case, both sets are consistent and provide valuable insights. For instance, we deduce that the price decreases the most when 
+
+- the accommodation is a shared room,
+- the number of reviews per month increases (note that review positivity is not measured),
+- the accommodation is a hostel room,
+- the host is estimated to have shared rooms,
+- and when the bathroom(s) is/are shared.
+
+Finally, the accommodations which have
 
 <p align="center">
 <img src="/pics/economical_listings_geo.jpg" alt="Economical listings with high quality" width="800"/>
 </p>
 
-
-
+I will not post the URLs of the detected listings, but you can find them quite easily using the notebooks of the linked repository :wink:
 
 <!--![Map of listing prices encoded in color](./pics/map_listings_prices_geo.jpg)
 -->
 
-
 ## Question 2: To Beach or not to Beach
 
-Of course, you can always go to the beach to catch some waves in the Basque Country, but doing it on foot in less than 15 minutes has an additional cost on average.
+Of course, you can always go to the beach to catch some waves in the Basque Country, but doing it on foot in less than 15 minutes has an additional cost on average. That is one of the insights displayed in the next diagram.
 
+This difference or significance plot shows the [T and Z statistics](https://en.wikipedia.org/wiki/Student%27s_t-test) computed for each feature considering two independent groups (accommodations with and without beach access). These statistics are related to the difference of means (T statistic, for continuous variables) or proportions (Z statistic, for discrete variables or proportions). If we take the usual significance level of 5%, the critical Z or T value is roughly 2. That means that if the values in the diagram are greater than 2, the averages or proportions of each group in each feature are significantly different.
 
+The sign of the statistic is color coded: blue bars denote positive statistics, which are associated with larger values for accommodations that have beach access.
 
 <p align="center">
 <img src="/pics/beach_comparison.png" alt="Feature differences between accomodations with and without beach access" width="600"/>
 </p>
+
+Long story short, here's the intepretation: 
+
+Going back to the price, the following figure shows the different price distributions for accommodations with a beach in less than 2km and further. We need to consider that there such a distribution or a congtingency table behind each of the features in the previous diagram.
 
 <p align="center">
 <img src="/pics/price_distribution_beach.png" alt="Price distribution for accommodations with and without beach access in less than 2km" width="600"/>
