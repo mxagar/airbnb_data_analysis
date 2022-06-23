@@ -28,10 +28,10 @@ For a summary of the results visit my [blog post on the topic]().
 
 The most important files in the repository are the **notebooks**:
 
-- `[00_AirBnB_DataAnalysis_Initial_Tests.ipynb](00_AirBnB_DataAnalysis_Initial_Tests.ipynb)`: first exposure to the dataset and the formulation of the three business questions analyzed.
-- `[01_AirBnB_DataAnalysis_DataCleaning_EDA.ipynb](01_AirBnB_DataAnalysis_DataCleaning_EDA.ipynb)`: Data Cleaning and Exploratory Data Analysis (EDA).
-- `[02_AirBnB_DataAnalysis_FeatureEngineering_and_Selection.ipynb](02_AirBnB_DataAnalysis_FeatureEngineering_and_Selection.ipynb)`: Feature Engineering and Feature Selection.
-- `[03_AirBnB_DataAnalysis_Modelling.ipynb](03_AirBnB_DataAnalysis_Modelling.ipynb)`: Model definition, training and evaluation.
+- [00_AirBnB_DataAnalysis_Initial_Tests.ipynb](00_AirBnB_DataAnalysis_Initial_Tests.ipynb): first exposure to the dataset and the formulation of the three business questions analyzed.
+- [01_AirBnB_DataAnalysis_DataCleaning_EDA.ipynb](01_AirBnB_DataAnalysis_DataCleaning_EDA.ipynb): Data Cleaning and Exploratory Data Analysis (EDA).
+- [02_AirBnB_DataAnalysis_FeatureEngineering_and_Selection.ipynb](02_AirBnB_DataAnalysis_FeatureEngineering_and_Selection.ipynb): Feature Engineering and Feature Selection.
+- [03_AirBnB_DataAnalysis_Modelling.ipynb](03_AirBnB_DataAnalysis_Modelling.ipynb): Model definition, training and evaluation.
 
 Each notebooks builds up on the previous.
 
@@ -41,7 +41,7 @@ Finally, the **figures** used for the [blog post] are in `pics/`.
 
 ## Usage
 
-If you are interested in the data analysis process, you can have a look at the notebooks `00` - `02`; however, if you would like to go directly to the modelling and inference part where the business questions are addressed, you can just open the notebook `03`.
+If you are interested in the data analysis process, you can have a look at the notebooks [00](00_AirBnB_DataAnalysis_Initial_Tests.ipynb), [01](01_AirBnB_DataAnalysis_DataCleaning_EDA.ipynb), [02](02_AirBnB_DataAnalysis_FeatureEngineering_and_Selection.ipynb); however, if you would like to go directly to the modelling and inference part where the business questions are addressed, you can just open the notebook [03](03_AirBnB_DataAnalysis_Modelling.ipynb).
 
 Each notebook has an introductory explanation and a table of contents.
 
