@@ -22,7 +22,7 @@ After posing the analysis questions, I perform the following operations:
 - Modelling
 - Model Scoring & Inferences
 
-For a summary of the results visit my [blog post on the topic]().
+For a summary of the results visit my [blog post on the topic](https://mikelsagardia.io/blog/airbnb-spain-basque-data-analysis.html).
 
 ## Files
 
@@ -37,7 +37,7 @@ Each notebooks builds up on the previous.
 
 There is a folder with the **dataset and the generated artifacts**: `data/`.
 
-Finally, the **figures** used for the [blog post] are in `pics/`.
+Finally, the **figures** used for the [blog post](https://mikelsagardia.io/blog/airbnb-spain-basque-data-analysis.html) are in `pics/`.
 
 ## Usage
 
@@ -45,7 +45,7 @@ If you are interested in the data analysis process, you can have a look at the n
 
 Each notebook has an introductory explanation and a table of contents.
 
-The main insights are summarized in [my blog post on the topic]().
+The main insights are summarized in [my blog post on the topic](https://mikelsagardia.io/blog/airbnb-spain-basque-data-analysis.html).
 
 ### Dependencies
 
