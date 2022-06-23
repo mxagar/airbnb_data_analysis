@@ -1,4 +1,10 @@
-data
+data/munich_2022_03_26
+data/seattle_kaggle
+data/boston_kaggle
+data/calendar*
+data/neighbourhoods*
+data/listings_summary.csv
+data/listings_detailed_reduced*
 .DS_Store
 .vscode
 .ipynb_checkpoints
