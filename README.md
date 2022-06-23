@@ -40,7 +40,7 @@ The most important files in the repository are the **notebooks**:
 
 Each notebooks builds up on the previous.
 
-There is a folder with the **dataset and the generated artifacts**: `data/`.
+There is a folder with the **dataset and the generated artefacts**: `data/`.
 
 Finally, the **figures** used for the [blog post](https://mikelsagardia.io/blog/airbnb-spain-basque-data-analysis.html) are in `pics/`.
 
