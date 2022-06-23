@@ -2,10 +2,7 @@
 
 In the current repository, I analyze the [AirBnB dataset from the Basque Country / *Euskadi*](http://insideairbnb.com/get-the-data/). The [Basque Country](https://en.wikipedia.org/wiki/Basque_Country_(autonomous_community)) (*Euskadi* in [Basque language](https://en.wikipedia.org/wiki/Basque_language)) is the region from northern Spain where I am from; after many years living in Germany, I moved back here in 2020. As a popular touristic target on the seaside, the analysis might be valuable for our visitors :smile:.
 
-Notes about the **dataset**:
-
-- Among all the files that compose the dataset, the one used in the analysis is `listings_detailed.csv`. It is a list of all the listed properties (5228) and their features (74).
-- Link to the [dataset dictionary](https://docs.google.com/spreadsheets/d/1iWCNJcSutYqpULSQHlNyGInUvHg2BoUGoNRIGa6Szc4/edit#gid=982310896)
+The dataset consists of a list of accommodations (5228) and their features (74). See the section [The Dataset and Its Processing](#the-dataset-and-its-processing) for more information.
 
 I follow the standard [CRISP-DM process](https://en.wikipedia.org/wiki/Cross-industry_standard_process_for_data_mining), which usually requires to define some business questions first; then, the data is collected and analyzed following those questions. In the current case, since the dataset was already created, the first notebook serves as a first exposure to it, after which the **business questions** are formulated:
 
@@ -24,11 +21,11 @@ After posing the analysis questions, I perform the following operations:
 
 For a summary of the results visit my [blog post on the topic](https://mikelsagardia.io/blog/airbnb-spain-basque-data-analysis.html).
 
-Table of contents:
+### Table of Contents
 
 - [Files](#files)
 - [Usage](#usage)
-- [About the Dataset](#about-the-dataset)
+- [The Dataset and Its Processing](#the-dataset-and-its-processing)
 - [Future work](#future-work)
 - [Authorship](#authorship)
 
@@ -70,13 +67,13 @@ spacy==3.3.0
 spacy_langdetect==0.1.2
 ```
 
-## About the Dataset
+## The Dataset and Its Processing
 
 In this section, I provide a brief explanation of the dataset ans its processing. If you are insterestd in the insights related to the business questions, please check my [blog post](https://mikelsagardia.io/blog/airbnb-spain-basque-data-analysis.html).
 
 AirBnB provides with several CSV files for each world region: (1) a listing of properties that offer accommodation, (2) reviews related to the listings, (3) a calendar and (4) geographical data. A detailed description of the features in each file can be found in the official [dataset dictionary](https://docs.google.com/spreadsheets/d/1iWCNJcSutYqpULSQHlNyGInUvHg2BoUGoNRIGa6Szc4/edit#gid=982310896).
 
-My analysis has concentrated on the listings file, which consists in a table of 5228 rows/entries (i.e., the accommodation places) and 74 columns/features (their attributes). Among the features, we find **continuous variables**, such as:
+My analysis has concentrated on the listings file `listings_detailed.csv`, which consists in a table of 5228 rows/entries (i.e., the accommodation places) and 74 columns/features (their attributes). Among the features, we find **continuous variables**, such as:
 
 - the price of the complete accommodation,
 - accommodates: maximum number of persons that can be accommodated,
