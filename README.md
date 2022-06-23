@@ -1,6 +1,6 @@
 # Analysis of the Basque Country AirBnB Dataset
 
-In the current repository, I analyze the [AirBnB dataset from the Basque Country / *Euskadi*](http://insideairbnb.com/get-the-data/). The [Basque Country](https://en.wikipedia.org/wiki/Basque_Country_(autonomous_community)) is the region from Spain I am from; after many years living in Germany, I moved back here in 2020. As a popular touristic target on the seaside, the analysis might be valuable for our visitors :smile:.
+In the current repository, I analyze the [AirBnB dataset from the Basque Country / *Euskadi*](http://insideairbnb.com/get-the-data/). The [Basque Country](https://en.wikipedia.org/wiki/Basque_Country_(autonomous_community)) (*Euskadi* in [Basque language](https://en.wikipedia.org/wiki/Basque_language)) is the region from northern Spain where I am from; after many years living in Germany, I moved back here in 2020. As a popular touristic target on the seaside, the analysis might be valuable for our visitors :smile:.
 
 Notes about the **dataset**:
 
