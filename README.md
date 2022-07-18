@@ -125,6 +125,7 @@ The dataset that results after the feature engineering consists of 3931 entries 
 
 Finally, in order to prevent overfitting and make the interpretation easier, I have carried out a [lasso regression](https://en.wikipedia.org/wiki/Lasso_(statistics)) to perform **feature selection**. Lasso regression is a L1 regularized regression which forces the model coefficients to converge to 0 if they have small values; subsequently, the features with small coefficient values can be dropped. That reduces the number of variables from 354 to 122. Thus, the final dataset used for modelling and inference has 3931 entries and 122 features.
 
+<<<<<<< HEAD
 ## Modelling
 
 TBD.
@@ -136,6 +137,9 @@ Here, I provide summary of the results. For a deeper discussion, please visit my
 TBD.
 
 ## Future Work
+=======
+## Future work
+>>>>>>> parent of e935271 (typo)
 
 Due to the lack of time, I don't think I'll modify this repository any time soon, but some extensions I image that could be worth trying:
 
