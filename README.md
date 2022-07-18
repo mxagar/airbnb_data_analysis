@@ -1,6 +1,6 @@
 # Analysis of the Basque Country AirBnB Dataset
 
-In the current repository, I analyze the [AirBnB dataset from the Basque Country / *Euskadi*](http://insideairbnb.com/get-the-data/). The [Basque Country](https://en.wikipedia.org/wiki/Basque_Country_(autonomous_community)) (*Euskadi* in [Basque language](https://en.wikipedia.org/wiki/Basque_language)) is the region from northern Spain where I am from; after many years living in Germany, I moved back here in 2020. As a popular touristic target on the seaside, the analysis might be valuable for our visitors :smile:.
+In this small project, I analyze the [AirBnB dataset from the Basque Country / *Euskadi*](http://insideairbnb.com/get-the-data/). The [Basque Country](https://en.wikipedia.org/wiki/Basque_Country_(autonomous_community)) (*Euskadi* in [Basque language](https://en.wikipedia.org/wiki/Basque_language)) is the region from northern Spain where I am from. After many years living in Germany, I moved back here in 2020. As a popular touristic target on the seaside, the analysis might be valuable for our visitors :smile:.
 
 The dataset consists of a list of accommodations (5228) and their features (74). See the section [The Dataset and Its Processing](#the-dataset-and-its-processing) for more information.
 
@@ -9,6 +9,8 @@ I follow the standard [CRISP-DM process](https://en.wikipedia.org/wiki/Cross-ind
 1. Can the features in the listings predict the mean price? Which are the most important features that increase the price? Are there any bargains (i.e., properties with high review scores that have a greater predicted price than the actual)?
 2. The Basque Country is on the seaside; however, some locations have direct access to a nearby beach in less than 2 km. Which are the most important differences between locations with beach access and locations without?
 3. [Donostia-San Sebastian](https://en.wikipedia.org/wiki/San_Sebastián) and [Bilbao](https://en.wikipedia.org/wiki/Bilbao) have the majority of the listings. Which are the most important differences between both cities in terms of features?
+
+The first question is approached as a regression problem, focusing on both the prediction and intepretation capabilities of the model. The last two questions are hypothesis tests between 2 groups across all features; even though that is not formally correct (due to correlations), it serves as a proxy for detecting differences between groups.
 
 After posing the analysis questions, I perform the following operations:
 
@@ -19,15 +21,17 @@ After posing the analysis questions, I perform the following operations:
 - Modelling
 - Model Scoring & Inferences
 
-For a summary of the results visit my [blog post on the topic](https://mikelsagardia.io/blog/airbnb-spain-basque-data-analysis.html).
+A summary of the results is provided in the section [Results](#Results). For a deeper discussion, please visit my [blog post on the topic](https://mikelsagardia.io/blog/airbnb-spain-basque-data-analysis.html).
 
 ### Table of Contents
 
-- [Files](#files)
-- [Usage](#usage)
-- [The Dataset and Its Processing](#the-dataset-and-its-processing)
-- [Future work](#future-work)
-- [Authorship](#authorship)
+- [Files](#Files)
+- [Usage](#Usage)
+- [The Dataset and Its Processing](#The-dataset-and-its-processing)
+- [Modelling](#Modelling)
+- [Results](#Results)
+- [Future work](#Future-work)
+- [Authorship](#Authorship)
 
 ## Files
 
@@ -68,8 +72,6 @@ spacy_langdetect==0.1.2
 ```
 
 ## The Dataset and Its Processing
-
-In this section, I provide a brief explanation of the dataset ans its processing. If you are insterestd in the insights related to the business questions, please check my [blog post](https://mikelsagardia.io/blog/airbnb-spain-basque-data-analysis.html).
 
 AirBnB provides with several CSV files for each world region: (1) a listing of properties that offer accommodation, (2) reviews related to the listings, (3) a calendar and (4) geographical data. A detailed description of the features in each file can be found in the official [dataset dictionary](https://docs.google.com/spreadsheets/d/1iWCNJcSutYqpULSQHlNyGInUvHg2BoUGoNRIGa6Szc4/edit#gid=982310896).
 
@@ -117,23 +119,33 @@ Additionally, I have applied **feature engineering** methods to almost all varia
 
 - Any numerical variable with a skewed distribution has been either transformed using logarithmic or power mappings, or binarized.
 - Categorical columns have been [one-hot encoded](https://en.wikipedia.org/wiki/One-hot).
-- All features have been scaled to the region `[0,1]`.
+- All features have been scaled to the range `[0,1]`.
 
 The dataset that results after the feature engineering consists of 3931 entries and 354 features. We have almost 5 times more features than in the beginning even with dropped variables because each class in the categorical variables becomes a feature; in particular, there are many amenities, property types and neighbourhoods.
 
 Finally, in order to prevent overfitting and make the interpretation easier, I have carried out a [lasso regression](https://en.wikipedia.org/wiki/Lasso_(statistics)) to perform **feature selection**. Lasso regression is a L1 regularized regression which forces the model coefficients to converge to 0 if they have small values; subsequently, the features with small coefficient values can be dropped. That reduces the number of variables from 354 to 122. Thus, the final dataset used for modelling and inference has 3931 entries and 122 features.
 
+## Modelling
+
+TBD.
+
+## Results
+
+Here, I provide summary of the results. For a deeper discussion, please visit my [blog post on the topic](https://mikelsagardia.io/blog/airbnb-spain-basque-data-analysis.html).
+
+TBD.
+
 ## Future Work
 
-I don't really have time to continue with the project, but some extensions I image that could be worth trying:
+Due to the lack of time, I don't think I'll modify this repository any time soon, but some extensions I image that could be worth trying:
 
 - [ ] Add more features; e.g., price per person, average price in neighbourhood, etc.
 - [ ] Use stratified models for clearly different groups; e.g., room type.
 - [ ] Create an NLP model that predicts the average review score from review texts.
-- [ ] Business question: how can one create a competitive listing?
+- [ ] New business question: How can one create a competitive listing?
 
 ## Authorship
 
-Mikel Sagardia, 2022. You can freely use the content from this repository; if you consider it, you can mention me as author, too.
+Mikel Sagardia, 2022. You can freely use the content from this repository; if you do so, please remember to link to the current repository -- thank you!
 
 No guarantees assured.
