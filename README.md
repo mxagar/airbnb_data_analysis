@@ -155,6 +155,11 @@ Here, I provide summary of the results. For a deeper discussion, please visit my
 
 TBD.
 
+## Known Issues
+
+- SpaCy: 
+- 
+
 ## Future Work
 
 TBD.
