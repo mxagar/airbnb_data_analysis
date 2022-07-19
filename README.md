@@ -119,15 +119,35 @@ Additionally, I have applied **feature engineering** methods to almost all varia
 
 - Any numerical variable with a skewed distribution has been either transformed using logarithmic or power mappings, or binarized.
 - Categorical columns have been [one-hot encoded](https://en.wikipedia.org/wiki/One-hot).
-- All features have been scaled to the range `[0,1]`.
+- Polynomial terms of 2nd degree (including interactions) were computed for the continuous variables.
+- All features have been scaled to the range `[0,1]` as a last step.
 
-The dataset that results after the feature engineering consists of 3931 entries and 354 features. We have almost 5 times more features than in the beginning even with dropped variables because each class in the categorical variables becomes a feature; in particular, there are many amenities, property types and neighbourhoods.
+The dataset that results after the feature engineering consists of 3931 entries and 353 or 818 features, depending on whether we consider only the linear or also the polynomial terms, respectively. In the linear case, we have almost 5 times more features than in the beginning even with dropped variables because each class in the categorical variables becomes a feature; in particular, there are many amenities, property types and neighbourhoods.
 
-Finally, in order to prevent overfitting and make the interpretation easier, I have carried out a [lasso regression](https://en.wikipedia.org/wiki/Lasso_(statistics)) to perform **feature selection**. Lasso regression is a L1 regularized regression which forces the model coefficients to converge to 0 if they have small values; subsequently, the features with small coefficient values can be dropped. That reduces the number of variables from 354 to 122. Thus, the final dataset used for modelling and inference has 3931 entries and 122 features.
+## Modelling (Question 1)
 
-## Modelling
+In order to answer Question 1 (prices), I have tried several linear regression models and random forests in combination with different sets of features:
 
-TBD.
+1. Linear features (n = 353): dummy variables of the categorical features and continuous/numerical variables, without any polynomial terms.
+2. Polynomial features (n = 818): polynomial terms of 2nd degree (including interactions) of the continuous variables and dummy variables without polynomial terms.
+3. Selected polynomial features (n = 443): the 2nd set of polynomial features filtered using a [Lasso regression](https://en.wikipedia.org/wiki/Lasso_(statistics)). Lasso regression is a L1 regularized regression which forces the model coefficients to converge to 0 if they are not that relevant for the model; subsequently, those features can be dropped.
+
+In all cases, cross-validation (CV) was applied in the training split and the hyperparameters were tuned for optimum outcomes. The R2 scores are displayed in the following table (using the test split):
+
+| Model | Linear Features (n = 353) | Polynomial Features (n = 818) | Selected Polynomial Features (n = 443) |
+| ----------- | ----------- | ----------- | ----------- |
+| Linear Regression | 0.61 | - | 0.35 |
+| Ridge or L2 Regularized Regression (with CV, k = 5) | 0.62 | 0.61 | 0.48 |
+| Lasso or L1 Regularized Regression (with CV, k = 5) | 0.62 | 0.62 | 0.44 |
+| Random Forests (with CV, k = 3) | 0.69 | 0.69 | 0.69 |
+
+Linear regression is the baseline, as well as the set of linear features. From the table, we can conclude that:
+
+- no regularized variation performed considerably better than the baseline;
+- the random forests model outperformed any other linear regression;
+- polynomial features did not contribute to improve the models.
+
+Following the last point, all the questions were studied using only the linear features (n = 353).
 
 ## Results
 
