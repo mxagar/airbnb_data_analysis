@@ -106,7 +106,7 @@ My analysis has concentrated on the listings file `listings_detailed.csv`, which
 
 Of course, not all features are meaningful to answer the posed questions. Additionally, a preliminary exploratory data analysis shows some peculiarities of the dataset. For instance, in contrast to city datasets like [Seattle](https://www.kaggle.com/datasets/airbnb/seattle) or [Boston](https://www.kaggle.com/datasets/airbnb/boston), the listings from the Basque country are related to a complete state in Spain; hence, the neighbourhoods recorded in them are, in fact, cities or villages spread across a large region. Moreover, the price distribution shows several outliers. Along these lines, I have performed the following simplifications:
 
-- Only the 60 (out of 196) neighbourhoods (i.e., cities and villages) with the most listings have been taken; these account for almost 90% of all listings. That reduction has allowed to manually encode neighbourhood properties, such as whether a village has access to a beach in less than 2 km (Question 2).
+- Only the 60 (out of 196) neighborhoods (i.e., cities and villages) with the most listings have been taken; these account for almost 90% of all listings. That reduction has allowed to manually encode neighborhood properties, such as whether a village has access to a beach in less than 2 km (Question 2).
 - Only the listings with a price below 1000 USD have been considered.
 - I have dropped the features that are irrelevant for modelling and inference (e.g., URLs and scrapping information).
 - From fields that contain medium length texts (e.g., description), only the language has been identified with [spaCy](https://spacy.io/universe/project/spacy-langdetect). The rest of the text fields have been encoded as categorical features.
@@ -122,19 +122,19 @@ Additionally, I have applied **feature engineering** methods to almost all varia
 - Polynomial terms of 2nd degree (including interactions) were computed for the continuous variables.
 - All features have been scaled to the range `[0,1]` as a last step.
 
-The dataset that results after the feature engineering consists of 3931 entries and 353 or 818 features, depending on whether we consider only the linear or also the polynomial terms, respectively. In the linear case, we have almost 5 times more features than in the beginning even with dropped variables because each class in the categorical variables becomes a feature; in particular, there are many amenities, property types and neighbourhoods.
+The dataset that results after the feature engineering consists of 3931 entries and 353 or 818 features, depending on whether we consider only the linear or also the polynomial terms, respectively. In the linear case, we have almost 5 times more features than in the beginning even with dropped variables because each class in the categorical variables becomes a feature; in particular, there are many amenities, property types and neighborhoods.
 
 ## Modelling (Question 1)
 
 In order to answer Question 1 (prices), I have tried several linear regression models and random forests in combination with different sets of features:
 
-1. Linear features (n = 353): dummy variables of the categorical features and continuous/numerical variables, without any polynomial terms.
-2. Polynomial features (n = 818): polynomial terms of 2nd degree (including interactions) of the continuous variables and dummy variables without polynomial terms.
-3. Selected polynomial features (n = 443): the 2nd set of polynomial features filtered using a [Lasso regression](https://en.wikipedia.org/wiki/Lasso_(statistics)). Lasso regression is a L1 regularized regression which forces the model coefficients to converge to 0 if they are not that relevant for the model; subsequently, those features can be dropped.
+1. Linear features (m = 353): dummy variables of the categorical features and continuous/numerical variables, without any polynomial terms.
+2. Polynomial features (m = 818): polynomial terms of 2nd degree (including interactions) of the continuous variables and dummy variables without polynomial terms.
+3. Selected polynomial features (m = 443): the 2nd set of polynomial features filtered using a [Lasso regression](https://en.wikipedia.org/wiki/Lasso_(statistics)). Lasso regression is a L1 regularized regression which forces the model coefficients to converge to 0 if they are not that relevant for the model; subsequently, those features can be dropped.
 
 In all cases, cross-validation (CV) was applied in the training split and the hyperparameters were tuned for optimum outcomes. The R2 scores are displayed in the following table (using the test split):
 
-| Model | Linear Features (n = 353) | Polynomial Features (n = 818) | Selected Polynomial Features (n = 443) |
+| Model | Linear Features (m = 353) | Polynomial Features (m = 818) | Selected Polynomial Features (m = 443) |
 | ----------- | ----------- | ----------- | ----------- |
 | Linear Regression | 0.61 | - | 0.35 |
 | Ridge or L2 Regularized Regression (with CV, k = 5) | 0.62 | 0.61 | 0.48 |
@@ -147,22 +147,21 @@ Linear regression is the baseline, as well as the set of linear features. From t
 - the random forests model outperformed any other linear regression;
 - polynomial features did not contribute to improve the models.
 
-Following the last point, all the questions were studied using only the linear features (n = 353).
+Following the last point, all the questions were studied using only the linear features (m = 353).
 
 ## Results
 
 Here, I provide summary of the results. For a deeper discussion, please visit my [blog post on the topic](https://mikelsagardia.io/blog/airbnb-spain-basque-data-analysis.html).
 
-TBD.
+1. Even though the price regression models have a moderate R2, we can detect listings which are candidate to be a bargain: accommodations with high review scores and predicted price above the true one. Additionally, the features with the largest impact on the price are: the type of accommodation, the type and number of bathrooms, and the location.
+2. Listings with a beach in less than 2 km have significantly more entire homes, more balconies, waterfronts and space for more accommodates; this is in line with their larger prices.
+3. The two major cities Donostia-San Sebastian and Bilbao nicely align with the previous synthesis, being Donostia a beach city and Bilbao a city without. Additionally, Bilbao seems to favor other practical domestic amenities.
 
 ## Known Issues
 
-- SpaCy: 
-- 
+- SpaCy: I am having some issues on my Mac M1 with the newest versions of spaCy (this affects notebook `02`).
 
 ## Future Work
-
-TBD.
 
 Due to the lack of time, I don't think I'll modify this repository any time soon, but some extensions I image that could be worth trying:
 
